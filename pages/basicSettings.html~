@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Cloudmultimedia by Ksantacr</title>
+
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <a href="../index.html"><h1>Cloud Multimedia</h1>
+        <p>Documentación de Cloud Multimedia</p>
+	</a>
+        <p class="view"><a href="../index.html"> Ir al inicio</a></p>
+
+	<h3>Configuraciones Básicas</h3>
+	<ol>
+	  <li><a href="configuracionInterfaces.html">Configuración de interfaces</a>
+ 	  <li><a href="conectividad">Verificando conectividad</a>
+	</ol>        
+      </header>
+      <section>
+        <h3>
+<a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Antes de empezar</h3>
+
+<p>La instalación se realizó sobre Ubuntu 14.04(LTS), con la la arquitectura Neutron. Donde se requieren 3 nodos mínimos(Controller, Network y Compute). Con esta arquitectura se puede escalar fácilmente mientras se agregen más nodos Compute. El nodo Network necesita 3 interfaces de red, Compute 2 interfaces y Controller sólo necesita una(ver imágen 1).
+<img src="../img/img1.png"/>
+<center><h5>Imagen1. Arquitectura Neutron</h5></center>
+ Los recursos de nuestro entorno son los siguiente:
+<table>
+  <tr>
+    <th>Nombre del Nodo</th><th>Procesadores</th><th>Memoria ram</th><th>Disco duro</th>
+  </tr>
+  <tr>
+    <td>Controller</td><td>2</td><td>4Gb</td><td>500Gb</td>
+  </tr>
+  <tr>
+    <td>Network</td><td>2</td><td>2Gb</td><td>250Gb</td>
+  </tr>
+<tr>
+  <td>Compute1</td><td>8</td><td>8Gb</td><td>1Tb</td>
+  </tr><tr>
+  <td>Compute2</td><td>8</td><td>8Gb</td><td>1Tb</td>
+  </tr>
+</table>
+</p>
+      </section>
+      <footer>
+<p class="view"><a href="http://blog.espol.edu.ec/render/"> Ir al sitio Oficial <small> Render Espol</small></a></p>
+        <p>This project is maintained by <a href="https://github.com/Ksantacr">Ksantacr</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>

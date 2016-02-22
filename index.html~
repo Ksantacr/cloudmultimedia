@@ -67,7 +67,6 @@ Existen más componentes pero los mencionados anteriormente se usaron en este pr
 <p>Algun pregunta del proyecto escribir a <a href="#">contácto</a>.</p>
       </section>
       <footer>
-<p class="view"><a href="http://blog.espol.edu.ec/render/"> Ir al sitio Oficial <small> Render Espol</small></a></p>
         <p>This project is maintained by <a href="https://github.com/Ksantacr">Ksantacr</a></p>
         <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
       </footer>

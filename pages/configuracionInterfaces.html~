@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Cloudmultimedia by Ksantacr</title>
+
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <a href="../index.html"><h1>Cloud Multimedia</h1>
+        <p>Documentación de Cloud Multimedia</p>
+	</a>
+         <p class="view"><a href="../index.html"> Ir al inicio</a></p>
+
+	<h3>Configuraciones Básicas</h3>
+	<ol>
+	  <li>Configuración de interfaces</li>
+ 	  <li><a href="#">Verificando conectividad</a>
+	  <li><a href="basicSettings.html">Regresar</a>
+	</ol>        
+      </header>
+      <section>
+       <h3>
+<a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuración de interfaces</h3>
+
+<p>
+Todas las configuraciones de las interfaces se realizan dentro del archivo: <pre>/etc/network/interfaces</pre>
+Y las configuraciones para el hostname dentro de: <pre>/etc/hosts</pre>
+<h4>Nodo Controller</h4>
+<ol>
+<li>Configuramos la primera interfaz 'management';
+<pre>
+auto eth0
+iface eth0 inet static
+address		10.0.0.11
+netmask		255.255.255.0
+gateway		10.0.0.1
+</pre>
+</li>
+<li>Indicamos el <code>hostname</code> del nodo <code>controller</code>
+<pre>
+# controller
+10.0.0.11       controller
+# network
+10.0.0.21       network
+# compute1
+10.0.0.31       compute1
+#compute2
+10.0.0.32	compute2
+</pre>
+</li>
+<li>Reiniciamos el sistema para activar los cambios.
+</li>
+</ol>
+<h4>Nodo Network</h4>
+<ol>
+<li>Configuramos la primera interfaz como 'management';
+<pre>
+auto eth0
+iface eth0 inet static
+address		10.0.0.21
+netmask		255.255.255.0
+gateway		10.0.0.1
+</pre>
+</li>La segunda interfaz sirve de tunel entre las instancias.<li>
+<pre>
+auto eth1
+iface eth1 inet static
+address		10.0.1.21
+netmask		255.255.255.0
+</pre>
+</li>
+<li>La tercera interfaz denominada 'external', nos otorgará un pool de direcciones las cuales se usarán como ip flotantes para nuestras instancias:
+<pre>
+auto eth2
+iface eth2 inet manual
+        up ip link set dev $IFACE up
+        down ip link set dev $IFACE down
+</pre></li>
+<li>Indicamos el <code>hostname</code> del nodo <code>network</code>
+<pre>
+# controller
+10.0.0.11       controller
+# network
+10.0.0.21       network
+# compute1
+10.0.0.31       compute1
+#compute2
+10.0.0.32	compute2
+</pre>
+</li>
+<li>Reiniciamos el sistema para activar los cambios.
+</li>
+</ol>
+<h4>Nodo Compute1</h4>
+<ol>
+<li>Configuramos la primera interfaz como 'management';
+<pre>
+auto eth0
+iface eth0 inet static
+address		10.0.0.31
+netmask		255.255.255.0
+gateway		10.0.0.1
+</pre>
+La dirección IP para los demás nodos compute debe usarse: 10.0.0.32, 10.0.0.33 en adelante.
+</li>
+<li>La segunda interfaz sirve de tunel entre las instancias.
+<pre>
+auto eth1
+iface eth1 inet static
+address		10.0.1.31
+netmask		255.255.255.0
+</pre>
+Para la segunda interfaz en los demás nodos compute debe usarse: 10.0.1.32, 10.0.1.33 en adelante.
+</li>
+<li>Indicamos el <code>hostname</code> del nodo <code>controller</code>
+<pre>
+# controller
+10.0.0.11       controller
+# network
+10.0.0.21       network
+# compute1
+10.0.0.31       compute1
+#compute2
+10.0.0.32	compute2
+</pre>
+<li>Reiniciamos el sistema para activar los cambios.
+</li>
+</ol>
+</p>
+      </section>
+      <footer>
+<p class="view"><a href="http://blog.espol.edu.ec/render/"> Ir al sitio Oficial <small> Render Espol</small></a></p>
+        <p>This project is maintained by <a href="https://github.com/Ksantacr">Ksantacr</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
