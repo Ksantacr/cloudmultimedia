@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Cloudmultimedia by Ksantacr</title>
+
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <a href="../index.html"><h1>Cloud Multimedia</h1>
+        <p>Documentación de Cloud Multimedia</p>
+	</a>
+         <p class="view"><a href="../index.html"> Ir al inicio</a></p>
+
+	<h3>Configuraciones Básicas</h3>
+	<ol>
+	  <li><a href="configuracionInterfaces.html">Configuración de interfaces</a></li>
+ 	  <li><a href="verificandoConectividad.html">Verificando conectividad</a></li>
+	  <li>Network Time Protocol
+	  <li><a href="paquetesOpenstack.html">Paquetes de openstack</a>
+	  <li><a href="basededatos.html">Base de datos</a>
+	  <li><a href="mensajes.html">Servidor de mensajes</a>
+	  <li><a href="basicSettings.html">Atrás</a>
+	</ol>        
+      </header>
+      <section>
+       <h3>
+<a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Network Time Protocol</h3>
+
+<p>
+Se debe instalar NTP para poder sincronizar correctamente los servicios de cada nodo. El nodo <code>controller</code> se usa como nodo principal para la sincronización todos los servicios.
+</p>
+<p>
+<strong>Nodo Controller</strong>
+<li>Instalar el servicio NTP
+<pre># apt-get install ntp</pre>
+</li>
+
+<li>Configurar el servicio NTP
+<p>Por defecto el nodo <code>controller</code> se sincroniza atravez de un pool de servidores públicos. Opcionalmente se puede editar el archivo <code>/etc/ntp.conf</code> para cambiar estos por otros servidores alternativos, como los de la organizacion.</p></li>
+
+<ol>
+<li>Editar el archivo <code>/etc/ntp.conf</code> y agregar las siguientes claves:
+<pre>
+server NTP_SERVER iburst
+restrict -4 default kod notrap nomodify
+restrict -6 default kod notrap nomodify</pre>
+<p>
+Eliminar el archivo <code>/var/lib/ntp/ntp.conf.dhcp</code> si existe.</p>
+</li>
+<li>Reiniciar el servicio NTP
+<pre># service ntp restart</pre></li>
+</ol>
+</p>
+<p>
+<strong>Otros nodos</strong>
+<li>Instalar el servicio NTP
+<pre># apt-get install ntp</pre>
+</li>
+
+<li>Configurar el servicio NTP
+<p>Configurar los nodos <code>network</code> y <code>compute</code> para referir al nodo <code>controller</code>
+</li>
+
+<ol>
+<li>Editar el archivo <code>/etc/ntp.conf</code>:
+<pre>
+server controller iburst</pre>
+</p>
+Eliminar el archivo <code>/var/lib/ntp/ntp.conf.dhcp</code> si existe.</p></li>
+<li>Reiniciar el servicio NTP
+<pre># service ntp restart</pre></li>
+</ol>
+</p>
+
+<p>
+<strong>Verificar operación</strong>
+<p>Antes de avanzar se necesita tener todos los nodos sincronizados. Algunos nodos, especialmente el de referencia (<code>controller</code>), puede tomar algunos minutos para sincronizar.</p>
+
+<ol><li>Ejecutar el siguiente comando en el nodo <code>controller</code>:
+<pre># ntpq -c peers</pre>
+<p>El contenido de la columna <code>remote</code> debe indicar el hostname o direccion IP de uno o mas servidores NTP.</p>
+</li>
+<li>Ejectuar este comando en el nodo <code>controller</code>:
+<pre># ntpq -c assoc</pre>
+<p>El contenido de la columna <code>condition</code> debe indicar <code>sys.peer</code> en uno de los servidores por lo menos.</p>
+</li>
+<li>Ejecutar este comando en los demás nodos:
+<pre># ntpq -c peers</pre>
+<p>El contenido de la columna <code>remote</code> debe indicar el hostname del nodo <code>controller</code></p>
+</li>
+<li>Ejecutar este comando en los demás nodos:
+<pre># ntpq -c assoc</pre>
+<p>El contenido de la columna <code>condition</code> debe indicar <code>sys.peer</code>.</p></li>
+</ol>
+
+</p>
+
+      </section>
+      <footer>
+<p class="view"><a href="http://blog.espol.edu.ec/render/"> Ir al sitio Oficial <small> Render Espol</small></a></p>
+        <p>This project is maintained by <a href="https://github.com/Ksantacr">Ksantacr</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>

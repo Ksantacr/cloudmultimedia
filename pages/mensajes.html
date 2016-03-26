@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Cloudmultimedia by Ksantacr</title>
+
+    <link rel="stylesheet" href="../stylesheets/styles.css">
+    <link rel="stylesheet" href="../stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <a href="../index.html"><h1>Cloud Multimedia</h1>
+        <p>Documentación de Cloud Multimedia</p>
+	</a>
+         <p class="view"><a href="../index.html"> Ir al inicio</a></p>
+
+	<h3>Configuraciones Básicas</h3>
+	<ol>
+	  <li><a href="configuracionInterfaces.html">Configuración de interfaces</a></li>
+ 	  <li><a href="verificandoConectividad.html">Verificando conectividad</a></li>
+	  <li><a href="ntp.html">Network Time Protocol</a>
+	  <li><a href="paquetesOpenstack.html">Paquetes de openstack</a>
+	  <li><a href="basededatos.html">Base de datos</a>
+	  <li>Servidor de mensajes
+	  <li><a href="basicSettings.html">Atrás</a>
+	</ol>        
+      </header>
+      <section>
+       <h3>
+<a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Messagging server</h3>
+
+<p>
+Openstack usa un enviador de mensajes para coordinar las operaciones y estado de los servicios. Típicamente se instalad en el nodo<code>controller</code>. Openstack tiene soporte para algunos 'message brokers' incluyendo RabbitMQ, Qpid y ZeroMQ. Para este caso se usó RabbitMQ.
+<p>
+<strong>Instalar RabbitMQ</strong><ol><li>
+Instalar los paquetes:
+<pre>
+# apt-get install rabbitmq-server
+</pre></li></ol>
+<p>
+<strong>Configurar RabbitMQ</strong><ol><li>
+
+
+      </section>
+      <footer>
+<p class="view"><a href="http://blog.espol.edu.ec/render/"> Ir al sitio Oficial <small> Render Espol</small></a></p>
+        <p>This project is maintained by <a href="https://github.com/Ksantacr">Ksantacr</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
